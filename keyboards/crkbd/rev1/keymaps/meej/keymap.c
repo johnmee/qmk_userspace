@@ -62,9 +62,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                   C(KC_PGUP), KC_PGUP,   KC_UP, KC_PGDN, C(KC_PGDN),  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_TILDE,RCS(KC_Z),XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END, XXXXXXX,
+     KC_TILDE, KC_CIRC, KC_AMPR, KC_ASTR,  KC_EQL, KC_MINS,                      KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, C_LEFT,  XXXXXXX,  C_RGHT, XXXXXXX, XXXXXXX,
+      KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, KC_PLUS, KC_UNDS,                      XXXXXXX, C_LEFT,  XXXXXXX,  C_RGHT, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, KC_LCTL, KC_LSFT,    XXXXXXX, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Symbols and WM
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,WM_SC_TG,                      KC_PEQL, KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,WM_SC_TG,                       KC_EQL, KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       WM_PGUP, C(KC_Z), C(KC_X), C(KC_C), C(KC_V),WM_SC_VW,                      KC_MINS, KC_LBRC, KC_QUOT, KC_RBRC, KC_COLN, KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Func.
   [5] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                      KC_CIRC,    KC_7,    KC_8,    KC_9, XXXXXXX,  KC_DEL,
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                      KC_PEQL,    KC_7,    KC_8,    KC_9, XXXXXXX,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,                      KC_PLUS,    KC_4,    KC_5,    KC_6,    KC_0, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|

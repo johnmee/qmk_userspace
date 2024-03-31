@@ -1,3 +1,42 @@
+# JOHN
+Use the existing virtualenv you have in the base dir. Otherwise you'll get logging errors because it is 
+running something else from somewhere without something.
+
+> source ../.venv/bin/activate.fish
+
+#### To build and flash
+
+% qmk compile -kb crkbd -km meej
+% qmk flash -kb crkbd -km meej -bl dfu-split-right
+
+
+### To create new keymaps
+
+Whatever the documentation says.
+
+## Crkbd
+
+Talk about my crkbd aka corne.
+
+## Sofle
+
+Talk about my sofle keyboard.
+
+## Niumini
+
+Talk about my old planck.
+
+## Crkbd-mac
+
+Talk about this attempt to use the crkbd with a mac.
+
+## Plankez
+
+I think this was an earlier attempt at the nui-mini, unless it was the ergodox I had for a moment.
+
+
+This is the forked readme..`.
+----
 # QMK Userspace
 
 This is a template repository which allows for an external set of QMK keymaps to be defined and compiled. This is useful for users who want to maintain their own keymaps without having to fork the main QMK repository.
@@ -17,14 +56,6 @@ This is a template repository which allows for an external set of QMK keymaps to
     * Corresponding `qmk userspace-remove -kb <your_keyboard> -km <your_keymap>` will delete it
     * Listing the build targets can be done with with `qmk userspace-list`
 1. Commit your changes
-
-## Howto build with GitHub
-
-1. In the GitHub Actions tab, enable workflows
-1. Push your changes above to your forked GitHub repository
-1. Look at the GitHub Actions for a new actions run
-1. Wait for the actions run to complete
-1. Inspect the Releases tab on your repository for the latest firmware build
 
 ## Howto build locally
 
