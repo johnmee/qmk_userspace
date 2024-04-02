@@ -2,13 +2,18 @@
 Use the existing virtualenv you have in the base dir. Otherwise you'll get logging errors because it is 
 running something else from somewhere without something.
 
-> source ../.venv/bin/activate.fish
+```
+% source ../.venv/bin/activate.fish
+% qmk userspace-list
+```
 
 #### To build and flash
 
+
+```
 % qmk compile -kb crkbd -km meej
 % qmk flash -kb crkbd -km meej -bl dfu-split-right
-
+```
 
 ### To create new keymaps
 
@@ -20,7 +25,15 @@ Talk about my crkbd aka corne.
 
 ## Sofle
 
-Talk about my sofle keyboard.
+I have mixed processors: a pro-micro (micro-usb) on the left which I also want to be the slave. 
+On the right, which I want as master, there is a USB-C but I don't think it is an elite-c, but perhaps a pro-micro with a C plug... if that's possible.  
+Either way I need to use **avrdude** on both sides.
+
+```
+% qmk new-keymap -kb sofle -km meej -bl avrdude-split-left
+% qmk new-keymap -kb sofle -km meej -bl avrdude-split-right
+```
+
 
 ## Niumini
 
