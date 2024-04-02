@@ -2,7 +2,7 @@
 # https://beta.docs.qmk.fm/using-qmk/hardware-features
 # https://beta.docs.qmk.fm/developing-qmk/qmk-reference/getting_started_make_guide#rules-mk-options
 
-# BOOTLOADER = caterina     # Pro-micro pin compatible controller
+BOOTLOADER = atmel-dfu      # Pro-micro pin compatible controller
 # BOOTMAGIC_ENABLE = no     # Access to the eeprom with a keyboard combo
 # MOUSEKEY_ENABLE = no      # Keys to simulate mouse movements
 # EXTRAKEY_ENABLE = yes     # System and Audio key control codes

@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Symbols and WM
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,WM_SC_TG,                       KC_EQL, KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
+      XXXXXXX, RCS(KC_Z), XXXXXXX, XXXXXXX, XXXXXXX,WM_SC_TG,                     KC_EQL, KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       WM_PGUP, C(KC_Z), C(KC_X), C(KC_C), C(KC_V),WM_SC_VW,                      KC_MINS, KC_LBRC, KC_QUOT, KC_RBRC, KC_COLN, KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|

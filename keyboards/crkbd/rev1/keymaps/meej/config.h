@@ -6,6 +6,7 @@
 #define SPLIT_LAYER_STATE_ENABLE yes
 
 #define MASTER_RIGHT
+#define EE_HANDS        // Records and remembers which hand it is after the first bl setting.
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 120
 #define UNICODE_SELECTED_MODES UC_LNX
 
