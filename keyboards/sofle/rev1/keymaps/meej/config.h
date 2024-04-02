@@ -1,3 +1,8 @@
+#pragma once
+
 #define MASTER_RIGHT
 #define SPLIT_USB_DETECT
 #define EE_HANDS
+#define UNICODE_SELECTED_MODES UC_LNX
+#define ENCODER_DIRECTION_FLIP
+#define ENCODER_RESOLUTIONS { 5, 5 }
