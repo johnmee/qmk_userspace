@@ -8,7 +8,7 @@
 #define MASTER_RIGHT
 #define EE_HANDS        // Records and remembers which hand it is after the first bl setting.
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 120
-#define UNICODE_SELECTED_MODES UC_LNX
+#define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
 
 //#define USE_MATRIX_I2C
 //* ws2812 RGB LED *//*

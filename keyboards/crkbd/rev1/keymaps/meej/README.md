@@ -7,6 +7,7 @@ going to get unmanageable, and have some new concoction of userspaces I'm not su
 On this read-through I have forked and added my corne keymap to `./keyboards/crkbd/keymaps/meej/`.
 
 ```buildoutcfg
+$ source ../.venv/bin/activate.fish
 # To flash (and press the little reset button). Switch the word `right` and `left` respective to the half you are flashing.
 $ qmk flash -bl dfu-split-right
 

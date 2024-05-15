@@ -19,7 +19,7 @@ BOOTLOADER = atmel-dfu      # Pro-micro pin compatible controller
 
 # MIDI_ENABLE = no          # MIDI is a sound module. We don't have sound.
 # UNICODE_ENABLE = no       # Unicode chars via UC(<code point>); covers most languages and symbols but not emojis.
-# UNICODEMAP_ENABLE = yes   # Unicode chars via X(map_index); you'll need a map table in a keymap file.
+UNICODEMAP_ENABLE = yes   # Unicode chars via X(map_index); you'll need a map table in a keymap file.
 # UCIS_ENABLE = no          # Unicode chars via mnemonic; needs map table in a keymap file.
 # AUDIO_ENABLE = no         # A speaker is wired to the C6 pin.
 # VARIABLE_TRACE = no       # Debugging/unit-testing trace on variables
