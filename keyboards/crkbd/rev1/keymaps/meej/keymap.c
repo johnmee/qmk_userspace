@@ -66,18 +66,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, KC_PLUS, KC_UNDS,                      XXXXXXX, C_LEFT,  XXXXXXX,  C_RGHT, XXXXXXX, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, KC_LCTL, KC_LSFT,    XXXXXXX, _______, _______
+                                          KC_LALT, KC_LCTL, KC_LSFT,    XXXXXXX, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
   // Symbols and WM
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, X(THUMB), X(OK), X(WINK), X(SMILE), WM_SC_TG,                     KC_EQL, KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
+      XXXXXXX, UM(THUMB), UM(OK), UM(WINK), UM(SMILE), WM_SC_TG,                     KC_EQL, KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       WM_PGUP, C(KC_Z), C(KC_X), C(KC_C), C(KC_V),WM_SC_VW,                      KC_MINS, KC_LBRC, KC_QUOT, KC_RBRC, KC_COLN, KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      WM_PGDN, RCS(KC_Z), WM_LEFT, WM_CNTR, WM_RGHT, G(KC_R),                      KC_UNDS, KC_LCBR, KC_DQUO, KC_RCBR, KC_BSLS, KC_PIPE,
+      WM_PGDN, RCS(KC_Z), WM_LEFT, WM_CNTR, WM_RGHT, G(KC_R),                    KC_UNDS, KC_LCBR, KC_DQUO, KC_RCBR, KC_BSLS, KC_PIPE,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LALT, KC_LCTL, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'

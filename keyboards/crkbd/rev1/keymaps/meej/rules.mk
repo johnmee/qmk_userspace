@@ -15,7 +15,7 @@ BOOTLOADER = atmel-dfu      # Pro-micro pin compatible controller
 # RGBLIGHT_ENABLE = no      # Addressable RGB backlights.
 # RGBLIGHT_SLEEP = no       # Turn out the lights when the host sleeps
 # RGBLIGHT_SPLIT  = no      # Sync
-# RGB_MATRIX_ENABLE = yes    # There is an RGB LED on every key.
+RGB_MATRIX_ENABLE = no    # There is an RGB LED on every key.
 
 # MIDI_ENABLE = no          # MIDI is a sound module. We don't have sound.
 # UNICODE_ENABLE = no       # Unicode chars via UC(<code point>); covers most languages and symbols but not emojis.
@@ -27,7 +27,7 @@ UNICODEMAP_ENABLE = yes   # Unicode chars via X(map_index); you'll need a map ta
 # KEY_LOCK_ENABLE = no      # Key locking; artificially hold down a BASIC KEYCODE. 7%.
 SPLIT_KEYBOARD = yes        # Dual MCUs need to work together.
 
-OLED_ENABLE = no          # An OLED, or two, is attached.
+OLED_ENABLE = yes          # An OLED, or two, is attached.
 # TAP_DANCE_ENABLE = no     # Double, or more, tapping
 
 
