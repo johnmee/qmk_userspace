@@ -10,7 +10,8 @@ enum layers {
 };
 
 enum custom_keycodes {
-    ALTTAB = SAFE_RANGE,
+    ALTLAYER = SAFE_RANGE,
+    ALTTAB,
     FWDTAB,
     BCKTAB
 };
@@ -30,7 +31,6 @@ enum custom_keycodes {
 #define WM_DOWN  G(KC_DOWN)
 #define WM_PGUP  G(C(KC_LEFT))
 #define WM_PGDN  G(C(KC_RGHT))
-#define WM_CNTR  A(KC_TAB)
 
 
 enum unicode_names {
@@ -47,26 +47,18 @@ const uint32_t PROGMEM unicode_map[] = {
 };
 
 
-// State tracking for alt-tab functionality
-static bool alt_tab_active = false;
-static bool alt_held = false;
-static uint16_t alttab_timer = 0;
-
-#define TAPPING_TERM_ALTTAB 200  // Adjust this value for tap/hold timing
-
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT(
-  KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV,
+  KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_BSPC,
   KC_ESC,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
   KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,  KC_SPC,  KC_ENT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,    XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                XXXXXXX, KC_LGUI, MO(_THREE), ALTTAB, XXXXXXX,       KC_RSFT, MO(_ONE),  KC_RCTL, KC_RALT, KC_RGUI
+             KC_LGUI,  KC_LALT, KC_LCTL, MO(_THREE), ALTLAYER,       MO(_ONE),  KC_RCTL, KC_RALT, KC_RGUI, KC_RSFT
 ),
 
 [_ONE] = LAYOUT(
-  _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+   KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
    KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                   C(KC_PGUP), KC_PGUP,   KC_UP, KC_PGDN, C(KC_PGDN),  KC_DEL,
  KC_TILDE, KC_CIRC, KC_AMPR, KC_ASTR,  KC_EQL, KC_MINS,                      KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END, XXXXXXX,
   KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, KC_PLUS, KC_UNDS, _______,    _______, XXXXXXX,  C_LEFT, XXXXXXX,  C_RGHT, XXXXXXX, KC_RSFT,
@@ -75,9 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_TWO] = LAYOUT(
   _______, _______ , _______ , _______ , _______ , _______,                           _______,  _______  , _______,  _______ ,  _______ ,_______,
-  XXXXXXX, UM(THUMB), UM(OK), UM(WINK), UM(SMILE), XXXXXXX,                           KC_EQL,  KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
-  G(C(KC_RGHT)), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), XXXXXXX,                                KC_MINS, KC_LBRC, KC_QUOT, KC_RBRC, KC_COLN, KC_SCLN,
-  G(C(KC_LEFT)), RCS(KC_Z), WM_CNTR, BCKTAB, FWDTAB, G(KC_R), _______,    _______,      KC_UNDS, KC_LCBR, KC_DQUO, KC_RCBR, KC_BSLS, KC_PIPE,
+  XXXXXXX, UM(THUMB), UM(OK), UM(WINK), UM(SMILE), XXXXXXX,                            KC_EQL,  KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
+  G(C(KC_RGHT)), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), G(KC_UP),                         KC_MINS, KC_LBRC, KC_QUOT, KC_RBRC, KC_COLN, KC_SCLN,
+  G(C(KC_LEFT)), RCS(KC_Z), BCKTAB, ALTTAB, FWDTAB, G(KC_DOWN), _______,    _______,     KC_UNDS, KC_LCBR, KC_DQUO, KC_RCBR, KC_BSLS, KC_PIPE,
                          _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 
@@ -91,94 +83,66 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
+
+// State tracking
+static bool alt_layer_active = false;
+static bool alt_held = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case ALTTAB:
+        case ALTLAYER:
             if (record->event.pressed) {
-                // Key pressed - start timer and activate layer
-                alttab_timer = timer_read();
-                alt_tab_active = true;
+                // Key pressed - activate layer 1
+                alt_layer_active = true;
                 layer_on(_TWO);
             } else {
-                // Key released
-                if (alt_tab_active) {
-                    uint16_t elapsed = timer_elapsed(alttab_timer);
-
-                    if (elapsed < TAPPING_TERM_ALTTAB && !alt_held) {
-                        // Short press - send single Alt+Tab
-                        tap_code16(A(KC_TAB));
-                    }
-
-                    // Clean up state
+                // Key released - deactivate layer and clean up
+                if (alt_layer_active) {
+                    // Release Alt if it's being held
                     if (alt_held) {
                         unregister_code(KC_LALT);
                         alt_held = false;
                     }
 
-                    alt_tab_active = false;
+                    alt_layer_active = false;
                     layer_off(_TWO);
                 }
             }
             return false;
 
+        case ALTTAB:
+            if (record->event.pressed && alt_layer_active) {
+                // Send Alt+Tab with release (toggle between current and last window)
+                tap_code16(A(KC_TAB));
+            }
+            return false;
+
         case FWDTAB:
-            if (record->event.pressed && alt_tab_active) {
-                // Ensure Alt is held for navigation
+            if (record->event.pressed && alt_layer_active) {
+                // Hold Alt if not already held, then send Tab
                 if (!alt_held) {
                     register_code(KC_LALT);
                     alt_held = true;
                 }
-                tap_code(KC_TAB);  // Send Tab (Alt is now held)
+                tap_code(KC_TAB);
             }
             return false;
 
         case BCKTAB:
-            if (record->event.pressed && alt_tab_active) {
-                // Ensure Alt is held for navigation
+            if (record->event.pressed && alt_layer_active) {
+                // Hold Alt if not already held, then send Shift+Tab
                 if (!alt_held) {
                     register_code(KC_LALT);
                     alt_held = true;
                 }
-                tap_code16(S(KC_TAB));  // Send Shift+Tab (Alt is now held)
+                tap_code16(S(KC_TAB));
             }
             return false;
 
         default:
-            // Handle other keys on the alt-tab layer
-            if (alt_tab_active && record->event.pressed) {
-                // Check if we're on the alt-tab layer and this isn't a transparent key
-                if (layer_state_is(_TWO)) {
-                    // Release Alt if it was held, so other keys work normally
-                    if (alt_held) {
-                        unregister_code(KC_LALT);
-                        alt_held = false;
-                    }
-                }
-            }
             return true;  // Process all other keycodes normally
     }
 }
-
-//bool encoder_update_user(uint8_t index, bool clockwise) {
-//    if (clockwise) {
-//        if (!is_alt_tab_active) {
-//            is_alt_tab_active = true;
-//            unregister_code(KC_LSFT);
-//            register_code(KC_LALT);
-//        }
-//        alt_tab_timer = timer_read();
-//        tap_code(KC_TAB);
-//    } else {
-//        if (!is_alt_shift_tab_active) {
-//            is_alt_shift_tab_active = true;
-//            register_code(KC_LALT);
-//            register_code(KC_LSFT);
-//        }
-//        alt_tab_timer = timer_read();
-//        tap_code(KC_TAB);
-//    }
-//    return false;
-//};
 
 
 
