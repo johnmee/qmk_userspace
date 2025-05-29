@@ -13,6 +13,10 @@ running the qmk cli without the qmk firmware.
 ```
 % qmk compile -kb crkbd -km meej
 % qmk flash -kb crkbd -km meej -bl dfu-split-right
+
+> source .venv/bin/activate
+> cd qmk_userspace
+> qmk flash -kb sofle -km micromee
 ```
 
 ## Crkbd

@@ -1,3 +1,9 @@
+
+> source .venv/bin/activate
+> cd qmk_userspace
+> qmk flash -kb sofle -km micromee
+
+
 ![SofleKeyboard default keymap](https://i.imgur.com/MZxVvm9.png)
 ![SofleKeyboard adjust layer](https://i.imgur.com/f5sKy0I.png)
 
