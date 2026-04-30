@@ -1,4 +1,7 @@
 # JOHN
+
+Best to look at the
+
 Use the existing virtualenv you have in the base dir. Otherwise you'll get logging errors because it is 
 running the qmk cli without the qmk firmware.
 
@@ -6,9 +9,9 @@ running the qmk cli without the qmk firmware.
 % source ../.venv/bin/activate.fish
 % qmk userspace-list
 ```
+This list is drawn directly from /qmk.json, which edit by hand, but probably has a command line equivalent.
 
 #### To build and flash
-
 
 ```
 % qmk compile -kb crkbd -km meej
@@ -17,15 +20,21 @@ running the qmk cli without the qmk firmware.
 > source .venv/bin/activate
 > cd qmk_userspace
 > qmk flash -kb sofle -km micromee
+
+> qmk flash -kb niu_mini -km meej
 ```
 
 ## Crkbd
 
-Talk about my crkbd aka corne.
+Talk about my crkbd aka corne.  This is my favourite and most used keyboard.
 
 ## Sofle
 
-I have mixed processors: a pro-micro (micro-usb) on the left which I also want to be the slave. 
+I rarely use this.  The idea was to take it into work and leave it there so I could mimic the same
+layout as home/corne, but then covid and I've not routinely had to go to an office since.  I don't
+really appreciate the extra row of numkeys.
+
+Mine I built with mixed processors: a pro-micro (micro-usb) on the left which I also want to be the slave. 
 On the right, which I want as master, there is a USB-C but I don't think it is an elite-c, 
 but perhaps a pro-micro with a C plug... if that's possible.  
 Either way I need to use **avrdude** on both sides.
@@ -37,18 +46,20 @@ Either way I need to use **avrdude** on both sides.
 
 ## Niumini
 
-Talk about my old planck.
+This is back in vogue because I find it hard to play games with the corne. I was thinking to
+build a 16 or 25 key square and set it up to program as a gaming pad (as games are typically mouse (right) and keypad (left)),
+but I've got this 40 key thing just laying around, so...
 
 ## Crkbd-mac
 
-Talk about this attempt to use the crkbd with a mac.
+I attempted to use the corne with a mac, but it never got much traction.
 
 ## Plankez
 
 I think this was an earlier attempt at the nui-mini, unless it was the ergodox I had for a moment.
 
 
-This is the forked readme..`.
+Below is the forked readme..`.
 ----
 # QMK Userspace
 
