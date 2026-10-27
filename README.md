@@ -1,17 +1,17 @@
 # JOHN
 
-Best to look at the
-
-Use the existing virtualenv you have in the base dir. Otherwise you'll get logging errors because it is 
-running the qmk cli without the qmk firmware.
-
 It is necessary to keep a ../qmk_firmware folder alongside this one.
 
+#### To build and flash
+
 ```
-% source ../.venv/bin/activate.fish
-% qmk userspace-list
+> cd qmk_userspace
+% qmk compile -kb crkbd -km meej
+% qmk flash -kb crkbd -km meej -bl dfu-split-right
+
+> qmk flash -kb sofle -km micromee
+> qmk flash -kb niu_mini -km meej
 ```
-This list is drawn directly from /qmk.json, which edit by hand, but probably has a command line equivalent.
 
 #### To add a new keyboard:
 1. create the folder under keyboards
@@ -19,20 +19,7 @@ This list is drawn directly from /qmk.json, which edit by hand, but probably has
 3. add the keymap.c and other files
 4. `qmk compile` ... `qmk flash`
 
-I confess I'm not sure where the qmk_firmware is kept in this scenario.
-
-#### To build and flash
-
-```
-> source .venv/bin/activate
-> cd qmk_userspace
-
-% qmk compile -kb crkbd -km meej
-% qmk flash -kb crkbd -km meej -bl dfu-split-right
-
-> qmk flash -kb sofle -km micromee
-> qmk flash -kb niu_mini -km meej
-```
+Qmk is installed at the system level.
 
 ## Crkbd
 

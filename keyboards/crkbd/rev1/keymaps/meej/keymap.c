@@ -10,18 +10,20 @@
 
 // Window Manager (Gnome PaperWM)
 #define WM_LEFT  G(KC_LEFT)
-#define WM_MONL  G(S(KC_LEFT))
 #define WM_RGHT  G(KC_RGHT)
-#define WM_MONR  G(S(KC_RGHT))
-#define WM_UP    G(KC_UP)
-#define WM_DOWN  G(KC_DOWN)
+#define WM_CNTR  G(KC_C)
 #define WM_PGUP  G(KC_PGUP)
 #define WM_PGDN  G(KC_PGDN)
-#define WM_CNTR  G(KC_C)
+#define WM_VIN   G(KC_I)       // Vertical Tile in
+#define WM_VOUT  G(KC_O)       // Vertical Tile out
+#define WM_VFUP  G(KC_UP)       // Vertical Focus Up
+#define WM_VFDN  G(KC_DOWN)     // Vertical Focus Down
 #define WM_FULL  G(S(KC_F))     // Full screen
 #define WM_VIEW  G(KC_TAB)
 #define WM_SC_VW G(S(KC_ESC))   // Scratch View
 #define WM_SC_TG G(C(KC_ESC))   // Scratch Toggle
+#define WM_MONL  G(S(KC_LEFT))
+#define WM_MONR  G(S(KC_RGHT))
 
 //enum custom_keycodes {
 //    WM_RSET = SAFE_RANGE,
@@ -56,13 +58,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT_split_3x6_3(
        KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                   C(KC_PGUP), KC_PGUP,   KC_UP, KC_PGDN, C(KC_PGDN),  KC_DEL,
      KC_TILDE, KC_CIRC, KC_AMPR, KC_ASTR,  KC_EQL, KC_MINS,                      KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END, XXXXXXX,
-      KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, KC_PLUS, KC_UNDS,                      XXXXXXX, C_LEFT,  XXXXXXX,  C_RGHT, XXXXXXX, KC_RSFT,
+      KC_CAPS, UM(THUMB), UM(OK), UM(SMILE), KC_PLUS, KC_UNDS,                   XXXXXXX, C_LEFT,  XXXXXXX,  C_RGHT, XXXXXXX, KC_RSFT,
                                           KC_LALT, KC_LCTL, KC_LSFT,    XXXXXXX, _______, _______
   ),
 
   // Symbols and WM
   [2] = LAYOUT_split_3x6_3(
-      XXXXXXX, UM(THUMB), UM(OK), UM(WINK), UM(SMILE), WM_SC_TG,                     KC_EQL, KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
+      XXXXXXX, WM_VIN, WM_VOUT, WM_VFUP, WM_VFDN, WM_SC_TG,                     KC_EQL, KC_LPRN, KC_ASTR, KC_RPRN, KC_AMPR,  KC_DEL,
       WM_PGUP, C(KC_Z), C(KC_X), C(KC_C), C(KC_V),WM_SC_VW,                      KC_MINS, KC_LBRC, KC_QUOT, KC_RBRC, KC_COLN, KC_SCLN,
       WM_PGDN, RCS(KC_Z), WM_LEFT, WM_CNTR, WM_RGHT, G(KC_R),                    KC_UNDS, KC_LCBR, KC_DQUO, KC_RCBR, KC_BSLS, KC_PIPE,
                                           KC_LALT, KC_LCTL, _______,    _______, _______, _______
